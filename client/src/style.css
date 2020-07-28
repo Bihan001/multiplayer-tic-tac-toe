@@ -1,0 +1,69 @@
+.roomContainer {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 60px 50px;
+  border: 1px solid black;
+}
+
+.game {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(210, 112, 255);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgb(170, 90, 207);
+  box-shadow: 2rem 2rem 4rem rgba(71, 0, 104, 0.336);
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  background: rgb(170, 90, 207);
+  margin: 20px;
+}
+
+.gameCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  font-size: 100px;
+  background: rgb(210, 112, 255);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .gameCell {
+    height: 100px;
+    width: 100px;
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  .gameCell {
+    height: 80px;
+    width: 80px;
+    font-size: 60px;
+  }
+}
+
+div.disabled {
+  pointer-events: none;
+
+  /* for "disabled" effect */
+  opacity: 0.3;
+}
