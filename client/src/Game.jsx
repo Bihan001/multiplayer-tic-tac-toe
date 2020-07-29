@@ -20,7 +20,7 @@ const Game = ({ match }) => {
     botRight: '',
   });
   useEffect(() => {
-    socket = io('http://localhost:5000');
+    socket = io('/');
     socket.emit('join room', { id: match.params.room });
     socket.on('message', (msg) => {
       setStatus(msg);

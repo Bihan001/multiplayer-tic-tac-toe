@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+require('dotenv').config();
 const cors = require('cors');
+const path = require('path');
 
 app.use(cors());
 
@@ -132,5 +134,14 @@ io.on('connection', (socket) => {
     console.log('User left');
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  //Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 server.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
